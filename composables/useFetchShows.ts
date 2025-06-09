@@ -1,16 +1,17 @@
 import { ref, onMounted } from 'vue';
+import { fetchShows } from '@/api/shows';
+import type { Show } from '@/types/show';
 
 export function useFetchShows() {
-  const shows = ref([]);
+  const shows = ref<Show[]>([]);
   const isLoading = ref(true);
   const error = ref<unknown>(null);
 
-  const fetchShows = async () => {
+  const loadShows = async () => {
     isLoading.value = true;
     try {
-      const res = await fetch('https://api.tvmaze.com/shows?page=1');
-      if (!res.ok) throw new Error('Failed to fetch shows');
-      shows.value = await res.json();
+      shows.value = await fetchShows(1);
+      error.value = null;
     } catch (err) {
       error.value = err;
     } finally {
@@ -18,7 +19,7 @@ export function useFetchShows() {
     }
   };
 
-  onMounted(fetchShows);
+  onMounted(loadShows);
 
-  return { shows, isLoading, error };
+  return { shows, isLoading, error, loadShows };
 }

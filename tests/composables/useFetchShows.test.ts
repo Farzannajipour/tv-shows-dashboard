@@ -13,31 +13,23 @@ describe('useFetchShows', () => {
     (fetch as any).mockClear();
   });
 
-  it('fetches and appends shows', async () => {
+  it('fetches and sets shows', async () => {
     (fetch as any).mockResolvedValueOnce({
       ok: true,
       json: async () => mockShows,
     });
-    const { shows, fetchShows, hasMore } = useFetchShows();
-    await fetchShows();
+    const { shows, isLoading, error, loadShows } = useFetchShows();
+    await loadShows();
     expect(shows.value).toHaveLength(2);
-    expect(hasMore.value).toBe(true);
-  });
-
-  it('sets hasMore to false if no data', async () => {
-    (fetch as any).mockResolvedValueOnce({
-      ok: true,
-      json: async () => [],
-    });
-    const { fetchShows, hasMore } = useFetchShows();
-    await fetchShows();
-    expect(hasMore.value).toBe(false);
+    expect(error.value).toBeNull();
+    expect(isLoading.value).toBe(false);
   });
 
   it('sets error if fetch fails', async () => {
     (fetch as any).mockResolvedValueOnce({ ok: false });
-    const { fetchShows, error } = useFetchShows();
-    await fetchShows();
+    const { shows, isLoading, error, loadShows } = useFetchShows();
+    await loadShows();
     expect(error.value).toBeInstanceOf(Error);
+    expect(isLoading.value).toBe(false);
   });
 });
