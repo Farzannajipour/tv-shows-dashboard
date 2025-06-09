@@ -48,7 +48,6 @@ npm run dev
 - Search by show name
 - Show details with schedule, genres, and summary
 - Responsive and mobile-friendly
-- Dark mode with smooth transitions and localStorage preference
 - Full accessibility (a11y) support
 - SEO-optimized (dynamic title, description, og:image, canonical)
 

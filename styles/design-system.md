@@ -8,6 +8,7 @@ This design system is built using Tailwind CSS and is intended to provide a cons
 - **lg**: 1.125rem (18px)
 - **xl**: 1.25rem (20px)
 - **2xl**: 1.5rem (24px)
+- **3xl**: 2rem (32px)
 
 **Decision:** These sizes provide a clear hierarchy and are based on common web standards for readability and accessibility.
 
@@ -50,6 +51,20 @@ This design system is built using Tailwind CSS and is intended to provide a cons
 - **Widths**: 0, 1px (default), 2px, 4px, 8px
 
 **Decision:** Borders are used sparingly for separation and emphasis, with a default of 1px for clarity.
+
+---
+
+## Detail Card Guidelines
+- **Card Layout**: Use a `bg-surface` background, `rounded-xl` corners, and `shadow-xl` for detail cards. Add generous padding (`p-8`), and center the card with a max width (`max-w-2xl`).
+- **Image**: Use `max-w-xs` or `md:w-60` for show images, with `rounded-lg`, `shadow-md`, and a subtle border for separation.
+- **Typography**: 
+  - Show name: `text-3xl`/`text-4xl`, `font-extrabold`, `text-primary`.
+  - Section labels (e.g., "Average rating:", "Description:"): `text-lg`, `font-medium`, `text-gray-500`.
+  - Rating value: `text-xl`, `font-bold`, `text-primary-dark`.
+  - Description: `prose`, `text-gray-900`.
+- **Spacing**: Use `gap-8` between image and content, and `gap-6` between content sections.
+- **Semantic HTML**: Use `<section>`, `<header>`, `<h1>`, `<dl>`, `<dt>`, `<dd>`, and `<h2>` for structure and accessibility.
+- **Accessibility**: All labels should be visible and have matching ARIA labels. Ensure color contrast meets WCAG AA.
 
 ---
 

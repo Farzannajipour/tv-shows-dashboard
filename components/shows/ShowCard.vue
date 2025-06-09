@@ -11,7 +11,6 @@
           {{ show.name }}
         </h3>
         <div class="flex items-center text-sm text-gray-600" aria-label="Show rating">
-          <Icon name="heroicons:star" class="w-4 h-4 text-yellow-400 mr-1" />
           {{ show.rating?.average || 'N/A' }}
         </div>
       </div>
