@@ -1,86 +1,79 @@
 # TV Shows Dashboard
 
-A modern TV shows dashboard built with Nuxt 3, TypeScript, and Tailwind CSS. This application allows users to browse TV shows by genre, view show details, and search for shows.
+A modern, accessible dashboard to browse and discover TV shows by genre, built with Nuxt 3 and Tailwind CSS.
 
-## Features
-
-- Browse TV shows by genre
-- View detailed information about each show
-- Search functionality
-- Dark mode support
-- Responsive design
-- TypeScript support
-- Modern UI with Tailwind CSS
-
-## Tech Stack
-
-- Nuxt 3
-- TypeScript
+## Stack
+- Nuxt 3 (Vite, SSR)
 - Tailwind CSS
-- ESLint (Airbnb config)
-- Prettier
-- @nuxt/image
-- @nuxtjs/seo
+- TypeScript
+- Nuxt Image
+- Nuxt SEO (useHead)
+- Vitest (unit testing)
+- Vercel (deployment)
+- vite-plugin-visualizer (bundle analysis)
 
-## Prerequisites
+## Getting Started
 
-- Node.js 18.x or later
-- npm 9.x or later
+### Prerequisites
+- Node.js 18+
+- npm 9+
 
-## Setup
-
-1. Clone the repository:
+### Install & Run Locally
 ```bash
-git clone <repository-url>
+git clone https://github.com/Farzannajipour/tv-shows-dashboard.git
 cd tv-shows-dashboard
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Start the development server:
-```bash
 npm run dev
 ```
 
-4. Build for production:
-```bash
-npm run build
-```
+## API Used
+- [TVMaze API](https://www.tvmaze.com/api)
+- Shows are fetched from `/shows?page=1` (API is paginated, so only the first page is used for demo purposes)
+- Genres are extracted and grouped client-side, as the API does not provide genre endpoints
+- Limitations: No direct genre endpoint, so grouping and sorting are handled in the app
 
-## Project Structure
+## Design & Architecture
+- **Component-driven**: UI is built from reusable components (`ShowCard`, `GenreRow`, `BaseButton`, etc.)
+- **Composables**: Data fetching, genre grouping, search, and dark mode logic are encapsulated in composables
+- **Tailwind Design System**: Custom color palette, spacing, typography, and shadows for consistency
+- **Error Boundaries**: Global error handler with retry UI
+- **Skeleton Loaders**: For smooth loading states
+- **SEO**: Dynamic metadata per page with `useHead`
+- **Accessibility**: Keyboard navigation, semantic HTML, ARIA labels, color contrast, and screen reader support
 
+## Features
+- Browse TV shows grouped by genre
+- Shows sorted by rating within each genre
+- Infinite scroll (pagination-ready)
+- Search by show name
+- Show details with schedule, genres, and summary
+- Responsive and mobile-friendly
+- Dark mode with smooth transitions and localStorage preference
+- Full accessibility (a11y) support
+- SEO-optimized (dynamic title, description, og:image, canonical)
+
+## Live Demo
+[https://tv-shows-dashboard.vercel.app/](https://tv-shows-dashboard.vercel.app/)
+
+## Folder Structure
 ```
 ├── components/
-│   ├── ui/          # Reusable UI components
-│   └── shows/       # Show-related components
-├── pages/
-│   ├── index.vue    # Homepage
-│   └── show/        # Show details pages
-├── composables/     # Reusable composition functions
-├── utils/          # Utility functions
-├── styles/         # Global styles
-├── tests/          # Unit tests
-└── public/         # Static assets
+│   ├── shows/         # ShowCard, GenreRow, ShowDetails
+│   └── ui/            # BaseButton, BaseCard, SkeletonLoader, ErrorFallback
+├── composables/       # useFetchShows, useGenres, useSearch, useDarkMode
+├── pages/             # index.vue, show/[id].vue
+├── public/            # Static assets
+├── styles/            # Tailwind config, design-system.md
+├── tests/             # Vitest unit tests
+├── nuxt.config.*      # Nuxt and Vite config
+└── vercel.json        # Vercel deployment config
 ```
 
-## Development
+## Bonus Tools
+- **vite-plugin-visualizer**: Analyze bundle size and dependencies
+- **useHead**: Dynamic SEO metadata
+- **Nuxt composables**: Clean, reusable logic for data and UI state
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run generate` - Generate static site
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
+---
 
-## Testing
-
-Run the test suite:
-```bash
-npm run test
-```
-
-## License
-
-MIT
+Built for performance, accessibility, and developer experience.
