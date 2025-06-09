@@ -23,4 +23,15 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
+  overrides: [
+    {
+      files: ['tests/**/*.ts'],
+      parser: '@typescript-eslint/parser',
+      extends: ['plugin:vitest/recommended'],
+      env: {
+        node: true,
+        'vitest-globals/env': true,
+      },
+    },
+  ],
 }; 

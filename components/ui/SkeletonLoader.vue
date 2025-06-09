@@ -10,15 +10,19 @@
       :style="{ width, height }"
       role="status"
       aria-label="Loading..."
-    />
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   width?: string
   height?: string
   rounded?: boolean
   count?: number
-}>();
+}>(), {
+  count: 5,
+});
 </script> 
