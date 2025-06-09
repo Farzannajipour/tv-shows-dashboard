@@ -6,7 +6,6 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './app.vue',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -22,11 +21,9 @@ module.exports = {
         },
         background: {
           DEFAULT: '#f9fafb', // gray-50
-          dark: '#18181b', // zinc-900
         },
         surface: {
           DEFAULT: '#fff',
-          dark: '#27272a', // zinc-800
         },
         error: {
           DEFAULT: '#ef4444', // red-500

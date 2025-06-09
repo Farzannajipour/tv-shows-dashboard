@@ -60,7 +60,7 @@ npm run dev
 ├── components/
 │   ├── shows/         # ShowCard, GenreRow, ShowDetails
 │   └── ui/            # BaseButton, BaseCard, SkeletonLoader, ErrorFallback
-├── composables/       # useFetchShows, useGenres, useSearch, useDarkMode
+├── composables/       # useFetchShows, useGenres, useSearch
 ├── pages/             # index.vue, show/[id].vue
 ├── public/            # Static assets
 ├── styles/            # Tailwind config, design-system.md

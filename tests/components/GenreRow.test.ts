@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/vue';
-import GenreRow from '@/components/shows/GenreRow.vue';
+import GenreRow from '~/components/shows/GenreRow.vue';
 
 describe('GenreRow', () => {
   it('renders genre and show cards', () => {
@@ -10,11 +10,6 @@ describe('GenreRow', () => {
     ];
     render(GenreRow, {
       props: { genre: 'Drama', shows },
-      global: {
-        stubs: {
-          NuxtImg: { template: '<img v-bind="$attrs" />' },
-        },
-      },
     });
     expect(screen.getByText('Drama')).toBeInTheDocument();
     expect(screen.getByText('Show 1')).toBeInTheDocument();
@@ -24,12 +19,9 @@ describe('GenreRow', () => {
   it('shows skeletons when loading', () => {
     render(GenreRow, {
       props: { genre: 'Comedy', shows: [], loading: true },
-      global: {
-        stubs: {
-          NuxtImg: { template: '<img v-bind="$attrs" />' },
-        },
-      },
     });
-    expect(screen.getAllByRole('status').length).toBeGreaterThan(0);
+    const loadingElements = screen.getAllByRole('status', { name: 'Loading...' });
+    expect(loadingElements.length).toBeGreaterThan(0);
+    expect(loadingElements[0]).toHaveClass('animate-pulse');
   });
 });

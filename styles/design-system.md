@@ -18,8 +18,8 @@ This design system is built using Tailwind CSS and is intended to provide a cons
 - **Secondary**: #f59e42 (orange-400)
 - **Secondary Light**: #fbbf24 (orange-300)
 - **Secondary Dark**: #d97706 (orange-600)
-- **Background**: #f9fafb (gray-50) / #18181b (dark)
-- **Surface**: #fff / #27272a (dark)
+- **Background**: #f9fafb (gray-50)
+- **Surface**: #fff
 - **Error**: #ef4444 (red-500)
 
 **Decision:** The palette is designed for clarity, accessibility, and visual appeal, with strong contrast for primary actions and a warm secondary accent.
