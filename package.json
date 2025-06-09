@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -20,6 +21,8 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@nuxt/image": "^1.10.0",
     "@nuxtjs/seo": "^3.0.3",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
@@ -33,6 +36,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.4.1",
+    "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "vitest": "^3.2.3"
