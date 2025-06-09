@@ -1,33 +1,24 @@
-import { ref } from 'vue';
-
-const API_URL = 'https://api.tvmaze.com/shows';
+import { ref, onMounted } from 'vue';
 
 export function useFetchShows() {
   const shows = ref([]);
-  const loading = ref(false);
-  const error = ref(null);
-  const page = ref(0);
-  const hasMore = ref(true);
+  const isLoading = ref(true);
+  const error = ref<unknown>(null);
 
   const fetchShows = async () => {
-    if (!hasMore.value) return;
-    loading.value = true;
+    isLoading.value = true;
     try {
-      const res = await fetch(`${API_URL}?page=${page.value}`);
+      const res = await fetch('https://api.tvmaze.com/shows?page=1');
       if (!res.ok) throw new Error('Failed to fetch shows');
-      const data = await res.json();
-      if (data.length === 0) {
-        hasMore.value = false;
-      } else {
-        shows.value.push(...data);
-        page.value++;
-      }
-    } catch (e) {
-      error.value = e;
+      shows.value = await res.json();
+    } catch (err) {
+      error.value = err;
     } finally {
-      loading.value = false;
+      isLoading.value = false;
     }
   };
 
-  return { shows, loading, error, fetchShows, hasMore };
+  onMounted(fetchShows);
+
+  return { shows, isLoading, error };
 }

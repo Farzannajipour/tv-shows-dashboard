@@ -1,12 +1,42 @@
+<script setup lang="ts">
+import { useFetchShows } from '@/composables/useFetchShows';
+import { useGenres } from '@/composables/useGenres';
+import GenreRow from '@/components/shows/GenreRow.vue';
+import SkeletonLoader from '@/components/ui/SkeletonLoader.vue';
+import ErrorFallback from '@/components/ui/ErrorFallback.vue';
+
+const { shows, isLoading, error } = useFetchShows();
+const genreMap = useGenres(shows);
+
+// SEO (already included)
+useHead({
+  title: 'TV Shows Dashboard | Browse by Genre',
+  meta: [
+    { name: 'description', content: 'Browse TV shows by genre, rating, and more. Find your next favorite show!' },
+    { property: 'og:title', content: 'TV Shows Dashboard | Browse by Genre' },
+    { property: 'og:description', content: 'Browse TV shows by genre, rating, and more. Find your next favorite show!' },
+    { property: 'og:image', content: '/cover.png' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ],
+  link: [{ rel: 'canonical', href: 'https://tv-shows-dashboard.vercel.app/' }],
+});
+</script>
+
 <template>
   <div>
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
       TV Shows by Genre
     </h1>
-    <!-- Show lists will be added here -->
+    <ErrorFallback v-if="error" />
+    <SkeletonLoader v-else-if="isLoading" />
+    <div v-else>
+      <GenreRow
+        v-for="(shows, genre) in genreMap"
+        :key="genre"
+        :genre="genre"
+        :shows="shows"
+      />
+    </div>
   </div>
 </template>
-
-<script setup lang="ts">
-// Component logic will be added here
-</script> 
