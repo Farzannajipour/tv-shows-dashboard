@@ -15,13 +15,7 @@
 <script setup lang="ts">
 import ShowCard from './ShowCard.vue';
 import SkeletonLoader from '../ui/SkeletonLoader.vue';
-
-interface Show {
-  id: number;
-  name: string;
-  image?: { medium: string };
-  rating?: { average: number };
-}
+import type { Show } from '@/types/show';
 
 defineProps<{ genre: string; shows: Show[]; loading?: boolean }>();
 </script> 

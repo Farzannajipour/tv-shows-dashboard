@@ -1,12 +1,6 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
-
-interface Show {
-  id: number;
-  name: string;
-  genres?: string[];
-  rating?: { average: number };
-}
+import type { Show } from '@/types/show';
 
 export function useGenres(shows: Ref<Show[]>) {
   return computed(() => {

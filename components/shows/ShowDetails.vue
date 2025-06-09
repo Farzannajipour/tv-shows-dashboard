@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-surface dark:bg-surface-dark rounded-lg shadow-lg p-6 max-w-3xl mx-auto" aria-label="Show details for {{ show.name }}">
+  <article v-if="show" class="bg-surface dark:bg-surface-dark rounded-lg shadow-lg p-6 max-w-3xl mx-auto" :aria-label="`Show details for ${show.name}`">
     <div class="flex flex-col md:flex-row gap-6">
       <NuxtImg
         :src="show.image?.original"
@@ -28,15 +28,7 @@
 </template>
 
 <script setup lang="ts">
-interface Show {
-  id: number;
-  name: string;
-  image?: { original: string };
-  rating?: { average: number };
-  genres?: string[];
-  schedule?: { days?: string[]; time?: string };
-  summary?: string;
-}
+import type { Show } from '@/types/show';
 
-defineProps<{ show: Show }>();
+defineProps<{ show: Show | null }>();
 </script> 

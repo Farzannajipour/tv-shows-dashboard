@@ -4,20 +4,20 @@ import { useRoute } from 'vue-router';
 import SkeletonLoader from '@/components/ui/SkeletonLoader.vue';
 import ErrorFallback from '@/components/ui/ErrorFallback.vue';
 import ShowDetails from '@/components/shows/ShowDetails.vue';
+import { fetchShowById } from '@/api/shows';
+import type { Show } from '@/types/show';
 
 const route = useRoute();
-const showId = route.params.id;
+const showId = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id;
 
-const show = ref<any>(null);
+const show = ref<Show | null>(null);
 const isLoading = ref(true);
 const error = ref<unknown>(null);
 
-const fetchShow = async () => {
+const loadShow = async () => {
   isLoading.value = true;
   try {
-    const res = await fetch(`https://api.tvmaze.com/shows/${showId}`);
-    if (!res.ok) throw new Error('Failed to fetch show');
-    show.value = await res.json();
+    show.value = await fetchShowById(showId);
   } catch (err) {
     error.value = err;
   } finally {
@@ -25,7 +25,7 @@ const fetchShow = async () => {
   }
 };
 
-onMounted(fetchShow);
+onMounted(loadShow);
 
 watch(show, (val) => {
   if (val) {
