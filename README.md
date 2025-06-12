@@ -2,9 +2,6 @@
 
 A modern, accessible dashboard to browse and discover TV shows by genre, built with Nuxt 3 and Tailwind CSS.
 
-## Why Nuxt 3 (VueJS)?
-Nuxt 3 is built on VueJS and provides a modern, component-driven architecture with excellent support for SSR, SEO, and developer experience. It allows for rapid development of accessible, performant, and maintainable web applications—making it a great fit for this assessment and for teams at ABN AMRO.
-
 ## Stack
 - Nuxt 3 (Vite, SSR)
 - Tailwind CSS
@@ -34,7 +31,7 @@ npm run dev
 
 ## API Used
 - [TVMaze API](https://www.tvmaze.com/api)
-- Shows are fetched from `/shows?page=1` (API is paginated, so only the first page is used for demo purposes)
+- Shows are fetched from the TVMaze API using pagination (`/shows?page=N`). Users can navigate between pages to see more shows.
 - Genres are extracted and grouped client-side, as the API does not provide genre endpoints
 - Limitations: No direct genre endpoint, so grouping and sorting are handled in the app
 
@@ -79,7 +76,7 @@ npm run test
 - Fully accessible search and navigation
 
 ## Live Demo
-[https://tv-shows-dashboard.vercel.app/](https://tv-shows-dashboard.vercel.app/)
+[https://tv-shows-dashboard-git-main-farzannajipours-projects.vercel.app](https://tv-shows-dashboard-git-main-farzannajipours-projects.vercel.app)
 
 ## Folder Structure
 ```
