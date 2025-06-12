@@ -2,6 +2,9 @@
 
 A modern, accessible dashboard to browse and discover TV shows by genre, built with Nuxt 3 and Tailwind CSS.
 
+## Why Nuxt 3 (VueJS)?
+Nuxt 3 is built on VueJS and provides a modern, component-driven architecture with excellent support for SSR, SEO, and developer experience. It allows for rapid development of accessible, performant, and maintainable web applications—making it a great fit for this assessment and for teams at ABN AMRO.
+
 ## Stack
 - Nuxt 3 (Vite, SSR)
 - Tailwind CSS
@@ -11,6 +14,9 @@ A modern, accessible dashboard to browse and discover TV shows by genre, built w
 - Vitest (unit testing)
 - Vercel (deployment)
 - vite-plugin-visualizer (bundle analysis)
+
+## Automated CI/CD
+Automated tests and linting are run on every push and pull request using GitHub Actions. This ensures code quality and prevents regressions before merging changes.
 
 ## Getting Started
 
@@ -50,6 +56,27 @@ npm run dev
 - Responsive and mobile-friendly
 - Full accessibility (a11y) support
 - SEO-optimized (dynamic title, description, og:image, canonical)
+
+## Testing
+
+### Unit Tests
+Run all unit tests with:
+```bash
+npm run test
+```
+(Vitest is used for fast, component-level testing.)
+
+## Quality Assurance
+- The application runs without console errors or warnings.
+- All code follows SOLID and clean code principles.
+- The UI is fully responsive and mobile-friendly.
+- Accessibility (a11y) is a priority throughout the app.
+
+## Extra Features
+- Loading skeletons for smooth UX
+- Error boundaries for robust error handling
+- Modern card hover animations
+- Fully accessible search and navigation
 
 ## Live Demo
 [https://tv-shows-dashboard.vercel.app/](https://tv-shows-dashboard.vercel.app/)
