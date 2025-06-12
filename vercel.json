@@ -1,8 +1,7 @@
 {
   "framework": "nuxtjs",
-  "ssr": true,
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "outputDirectory": ".output/public"
-} 
+}
