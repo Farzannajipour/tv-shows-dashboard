@@ -20,19 +20,24 @@
             <dd class="flex items-center text-xl font-bold text-primary-dark" aria-label="Average rating">
               <span>{{ show.rating?.average || 'N/A' }}</span>
             </dd>
-        </div>
+          </div>
         </dl>
         <div>
           <h2 class="text-lg font-medium text-gray-500 mb-1">Description:</h2>
           <div class="prose max-w-none text-gray-900" v-html="show.summary" aria-label="Show summary"></div>
+        </div>
+        <RelatedShows :shows="relatedShows" />
       </div>
-    </div>
-  </article>
+    </article>
   </section>
 </template>
 
 <script setup lang="ts">
 import type { Show } from '@/types/show';
+import { useRelatedShows } from '@/composables/useRelatedShows';
+import RelatedShows from './RelatedShows.vue';
+import { computed } from 'vue';
 
-defineProps<{ show: Show | null }>();
+const props = defineProps<{ show: Show | null, allShows: Show[], maxRelated?: number }>();
+const relatedShows = useRelatedShows(computed(() => props.show), computed(() => props.allShows), props.maxRelated ?? 6);
 </script> 

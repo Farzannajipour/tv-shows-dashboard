@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import SkeletonLoader from '@/components/ui/SkeletonLoader.vue';
 import ErrorFallback from '@/components/ui/ErrorFallback.vue';
 import ShowDetails from '@/components/shows/ShowDetails.vue';
-import { fetchShowById } from '@/api/shows';
+import { fetchShowById, fetchShows } from '@/api/shows';
 import type { Show } from '@/types/show';
 
 const route = useRoute();
@@ -13,11 +13,13 @@ const showId = Array.isArray(route.params.id) ? route.params.id[0] : route.param
 const show = ref<Show | null>(null);
 const isLoading = ref(true);
 const error = ref<unknown>(null);
+const allShows = ref<Show[]>([]);
 
 const loadShow = async () => {
   isLoading.value = true;
   try {
     show.value = await fetchShowById(showId);
+    allShows.value = await fetchShows(1); // Only first page for demo
   } catch (err) {
     error.value = err;
   } finally {
@@ -53,6 +55,6 @@ watch(show, (val) => {
 
     <SkeletonLoader v-if="isLoading" />
     <ErrorFallback v-else-if="error" />
-    <ShowDetails v-else :show="show" />
+    <ShowDetails v-else :show="show" :allShows="allShows" :maxRelated="2" />
   </div>
 </template>

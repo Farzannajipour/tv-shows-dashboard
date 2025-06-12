@@ -5,7 +5,4 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "outputDirectory": ".output/public"
-  // "rewrites": [
-  //   { "source": "/(.*)", "destination": "/index.html" }
-  // ]
 } 
