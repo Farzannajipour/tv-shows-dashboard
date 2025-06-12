@@ -9,7 +9,7 @@
       Try Again
     </button>
   </div>
-</template>
+</template> 
 
 <script setup lang="ts">
 defineEmits(['reset']);

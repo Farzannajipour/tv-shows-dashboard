@@ -20,14 +20,14 @@
             <dd class="flex items-center text-xl font-bold text-primary-dark" aria-label="Average rating">
               <span>{{ show.rating?.average || 'N/A' }}</span>
             </dd>
-          </div>
+        </div>
         </dl>
         <div>
           <h2 class="text-lg font-medium text-gray-500 mb-1">Description:</h2>
           <div class="prose max-w-none text-gray-900" v-html="show.summary" aria-label="Show summary"></div>
-        </div>
       </div>
-    </article>
+    </div>
+  </article>
   </section>
 </template>
 
